@@ -15,6 +15,9 @@
     <module>gulimail-order</module>
 
 </modules>
+    <dependencyManagement>
+
+    </dependencyManagement>
     <build>
         <plugins>
             <plugin>
