@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    username: root
+    password: 156437734
+    url: jdbc:mysql://47.98.210.55:3306/gulimall_product?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.jdbc.Driver
+  application:
+    name: product
+  cloud:
+      nacos:
+        discovery:
+          server-addr: localhost:8848
+      alicloud:
+       access-key: LTAI4GE6hE14Cy1vF1CjA1dC
+       secret-key: 3KyewP0VM7YziLBFms0uLF1fzEjfsl
+       oss:
+         endpoint: oss-cn-hangzhou.aliyuncs.com
+
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+server:
+  port: 3000

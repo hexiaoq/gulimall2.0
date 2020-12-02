@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: third-party
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    alicloud:
+      access-key: LTAI4GE6hE14Cy1vF1CjA1dC
+      secret-key: 3KyewP0VM7YziLBFms0uLF1fzEjfsl
+      oss:
+        endpoint: oss-cn-hangzhou.aliyuncs.com
+        bucket: hxqmall
+server:
+  port: 3008

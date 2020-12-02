@@ -3,21 +3,26 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.atguigu.gulimail</groupId>
-    <artifactId>gulimai</artifactId>
+    <groupId>com.atguigu.gulimall</groupId>
+    <artifactId>gulimall</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>gulimail</name>
+    <name>gulimall</name>
     <description>Demo project for Spring Boot</description>
     <packaging>pom</packaging>
 
 <modules>
-    <module>gulimail-product</module>
-    <module>gulimail-order</module>
+    <module>gulimall-product</module>
+    <module>gulimall-order</module>
+    <module>gulimall-coupon</module>
+    <module>gulimall-member</module>
+    <module>gulimall-ware</module>
+    <module>renren-fast</module>
+    <module>gulimall-common</module>
+    <module>gulimall-gateway</module>
+
 
 </modules>
-    <dependencyManagement>
 
-    </dependencyManagement>
     <build>
         <plugins>
             <plugin>
@@ -29,10 +34,6 @@
                         C:\Program Files\Java\jdk1.8.0_221\bin\javac.exe
                     </executable>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
