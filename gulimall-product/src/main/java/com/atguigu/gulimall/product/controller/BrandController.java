@@ -5,6 +5,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.atguigu.gulimall.product.entity.AttrEntity;
+import com.atguigu.gulimall.product.entity.CategoryBrandRelationEntity;
+import com.atguigu.gulimall.product.service.CategoryBrandRelationService;
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -19,6 +23,7 @@ import com.atguigu.gulimall.product.service.BrandService;
 import com.atguigu.common.utils.PageUtils;
 import com.atguigu.common.utils.R;
 
+import javax.annotation.Resource;
 
 
 /**
@@ -33,6 +38,8 @@ import com.atguigu.common.utils.R;
 public class BrandController {
     @Autowired
     private BrandService brandService;
+    @Resource
+    CategoryBrandRelationService categoryBrandRelationService;
 
     /**
      * 列表
@@ -82,6 +89,11 @@ public class BrandController {
     @RequestMapping("/update")
     public R update(@RequestBody BrandEntity brand){
 		brandService.updateById(brand);
+		categoryBrandRelationService.update(
+                new UpdateWrapper<CategoryBrandRelationEntity>().
+                        eq("brand_id",brand.getBrandId()).set("brand_name",brand.getName())
+        );
+
 
         return R.ok();
     }

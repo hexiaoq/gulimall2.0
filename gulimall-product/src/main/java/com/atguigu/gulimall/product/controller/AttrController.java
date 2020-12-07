@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.atguigu.gulimall.product.vo.AttrResVo;
+import com.atguigu.gulimall.product.vo.AttrVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.BindingResult;
@@ -44,34 +46,35 @@ public class AttrController {
         return R.ok().put("page", page);
     }
 
+    ///product/attr/base/list/{catelogId}
+    /**
+     * 基本属性列表
+     */
+    @RequestMapping("/{attrtype}/list/{catelogId}")
+    public R baselist(@RequestParam Map<String, Object> params,@PathVariable("attrtype") String type,@PathVariable("catelogId") long catelogId){
+        PageUtils page = attrService.querybasePage(params,catelogId,type);
+
+        return R.ok().put("page", page);
+    }
+
 
     /**
      * 信息
      */
     @RequestMapping("/info/{attrId}")
     public R info(@PathVariable("attrId") Long attrId){
-		AttrEntity attr = attrService.getById(attrId);
+       AttrResVo resVo= attrService.getattrinfo(attrId);
 
-        return R.ok().put("attr", attr);
+        return R.ok().put("attr", resVo);
     }
 
     /**
      * 保存
      */
     @RequestMapping("/save")
-    public R save(@RequestBody @Validated AttrEntity attr, BindingResult result) {
-        if (result.hasErrors())
-        {
-            HashMap<Object, Object> hashMap = new HashMap<>();
-            result.getFieldErrors().forEach(errors->{
-                String field = errors.getField();
-                String message=errors.getDefaultMessage();
-                hashMap.put(field,message);
-            });
-            return R.error(400,"数据不合法").put("message",hashMap);
-        }
+    public R save(@RequestBody AttrVo attr) {
 
-		attrService.save(attr);
+		attrService.saveattr(attr);
 
         return R.ok();
     }

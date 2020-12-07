@@ -8,6 +8,8 @@
 
 package com.atguigu.common.utils;
 
+
+
 import org.apache.http.HttpStatus;
 
 import java.util.HashMap;
